@@ -1,6 +1,6 @@
 {
     "name": "frontend",
-    "homepage": "http://ale-adventures.github.io/newsapp/",
+    "homepage": "http://andrewdash.github.io/newsapp/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
