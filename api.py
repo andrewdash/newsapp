@@ -22,13 +22,13 @@ from starlett.middleware import Middleware
 origins = ["http://localhost:3000", "https://andrewdash.github.io"]
 # what is a middleware? 
 # software that acts as a bridge between an operating system or database and applications, especially on a network.
-middleware = [
-    Middleware(CORSMiddleware, 
+middleware = Middleware(
+    CORSMiddleware, 
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
-]
+    allow_headers=["*"]
+)]
 
 # app.add_middleware(
 #     CORSMiddleware,
