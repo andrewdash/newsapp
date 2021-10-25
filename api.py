@@ -18,19 +18,19 @@ from starlette.middleware.cors import CORSMiddleware
 from starlett.middleware import Middleware
 
 
-
+app = FastAPI(debug=True)
 origins = ["http://localhost:3000", "https://andrewdash.github.io"]
 # what is a middleware? 
 # software that acts as a bridge between an operating system or database and applications, especially on a network.
-middleware = [
-    Middleware(
-        CORSMiddleware, 
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"]
-    )
-]
+# middleware = [
+#     Middleware(
+#         CORSMiddleware, 
+#         allow_origins=origins,
+#         allow_credentials=True,
+#         allow_methods=["*"],
+#         allow_headers=["*"]
+#     )
+# ]
 
 # app.add_middleware(
 #     CORSMiddleware,
@@ -39,8 +39,14 @@ middleware = [
 #     allow_methods=["*"],
 #     allow_headers=["*"],
 # )
-app = FastAPI(middleware=middleware)
-
+# app = FastAPI(middleware=middleware)
+app = CORSMiddleware(
+    app=app,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # === Application Main Endpoint
 @app.get("/news")
 def list_news(
@@ -68,5 +74,5 @@ def list_news(
         return traceback.print_exc()
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="localhost", port=8000, reload=True)
+    uvicorn.run(app, host="localhost", port=8000, reload=True)
     
