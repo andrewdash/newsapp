@@ -18,8 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# origins = ["http://localhost:3000", "https://andrewdash.github.io"]
-origins = ["*"]
+origins = ["http://localhost:3000", "https://andrewdash.github.io", "http://andrewdash.github.io"]
 # what is a middleware? 
 # software that acts as a bridge between an operating system or database and applications, especially on a network.
 app.add_middleware(
