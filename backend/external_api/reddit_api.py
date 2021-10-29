@@ -23,7 +23,7 @@ def reddit_response_parser(results) -> List[NewsBase]:
                 {
                     "title": "title of the news",
                     "link": "original link of the news source",
-                    "source": "your-api-name"
+                    "api_source": "your-api-name"
                     "created_utc": "date in epoc time"
                 },
             ...
@@ -35,7 +35,7 @@ def reddit_response_parser(results) -> List[NewsBase]:
             title=child["data"]["title"],
             link=child["data"]["url"],
             created_utc=child["data"]["created_utc"],
-            source="Reddit",
+            api_source="Reddit",
         )
         response.append(news_base)
     return response
@@ -52,7 +52,7 @@ def pushshift_reddit_response_parser(results) -> List[NewsBase]:
                 {
                     "title": "title of the news",
                     "link": "original link of the news source",
-                    "source": "your-api-name"
+                    "api_source": "your-api-name"
                     "created_utc": "date in epoc time"
                 },
             ...
@@ -64,7 +64,8 @@ def pushshift_reddit_response_parser(results) -> List[NewsBase]:
             title=child["title"],
             link=child["full_link"],
             created_utc=child["created_utc"],
-            source="Reddit",
+            news_source="Reddit",
+            api_source="Reddit",
         )
         response.append(news_base)
 
@@ -74,7 +75,8 @@ def pushshift_reddit_response_parser(results) -> List[NewsBase]:
             title="No items found!",
             link="",
             created_utc=datetime.today().timestamp(),
-            source="Reddit"
+            news_source="Reddit",
+            api_source="Reddit",
         )
         response.append(empty_news_base)
     return response
@@ -99,7 +101,7 @@ search_url = (base_url + "&"
 )
 
 REDDIT_API_MAPPING_V3 = {
-    "api_name": "Reddit",
+    "api_source": "Reddit",
     "parser": pushshift_reddit_response_parser,
     "listing_url": listing_url,
     "search_url": search_url,

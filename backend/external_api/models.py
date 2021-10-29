@@ -7,19 +7,22 @@ class NewsBase:
     
     title: str,
     link: str,
-    source: str,
+    api_source: str,
     created_utc: str,
+    news_source: str,
     """
     def __init__(self, 
                 title: str,
                 link: str,
                 created_utc: str,
-                source: str,
+                api_source: str,
+                news_source: str,
     ):
         self.title: str = title
         self.link: str = link
         self.created_utc: str = created_utc
-        self.source: str = source
+        self.api_source: str = api_source
+        self.news_source: str = news_source
 
 
 class NewsList(NewsBase):

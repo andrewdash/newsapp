@@ -69,7 +69,7 @@ const setNewsItems = (news_data) => {
                 </Box>
                 <Box>
                     <Text mt={2} fontSize="sm">
-                        {article.source}: {timeConverter(article.created_utc)}
+                        {article.news_source}: {timeConverter(article.created_utc)}
                     </Text>
                 </Box>
             </Stack>

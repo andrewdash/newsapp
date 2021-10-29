@@ -58,7 +58,10 @@ def get_news(limit):
     response = []
     for api in API_COLLECTION:
         headers = _set_headers(api)
-        print(f"running the {api['api_name']} api...")
+        print(f"running the {api['api_source']} api...")
+        if api["api_source"] == "newsapi":
+            limit = 40
+        print(api["listing_url"])
         result = requests.get(api["listing_url"].format(limit=limit),
                               headers=headers).json()
         if result:
@@ -80,7 +83,9 @@ def search_news(query, limit):
     response = []
     for api in API_COLLECTION:
         headers = _set_headers(api)
-        print(f"running the {api['api_name']} api...")
+        print(f"running the {api['api_source']} api...")
+        if api["api_source"] == "newsapi":
+            limit = 40
         result = requests.get(api["search_url"].format(query=query, limit=limit),
                               headers=headers).json()
         if result:
